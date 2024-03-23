@@ -17,6 +17,7 @@ export enum WebsiteKeys {
   LAND_LINE = "land_line",
   PHONE_NUMBER_1 = "phone_number_1",
   PHONE_NUMBER_2 = "phone_number_2",
+  ADDRESS = "address",
   EMAIL = "email",
   FACEBOOK = "facebook",
   INSTAGRAM = "instagram",
@@ -27,8 +28,6 @@ const Dashboard: React.FC = () => {
   const [initialized, setInitialized] = useState<boolean>(false);
   const [modelData, setModelData] = useState<Website>({} as Website);
   const { showError, showSuccess } = useUI();
-
-  console.log(modelData)
 
   const { mutateAsync: updateMutation } = useUpdateWebsite();
   const { data, error, isLoading } = useWebsiteDetailsQuery({ identifier: "777-guards" });
@@ -85,22 +84,13 @@ const Dashboard: React.FC = () => {
       value: modelData?.phone_number_2!,
       onChange: (value: string) => handleModelData(WebsiteKeys.PHONE_NUMBER_2, value),
     },
-    // {
-    //   type: "textarea",
-    //   label: "Description",
-    //   key: WebsiteKeys.DESCRIPTION,
-    //   value: modelData?.description,
-    //   onChange: (value: string) => handleModelData(WebsiteKeys.DESCRIPTION, value),
-    //   placeholder: "Description",
-    // },
     {
       label: "Address",
       type: "text",
       width: "col-md-12",
-      key: WebsiteKeys.NAME,
-      value: modelData?.name,
-      onChange: (value: string) => handleModelData(WebsiteKeys.NAME, value),
-      placeholder: "Enter Project Name",
+      key: WebsiteKeys.ADDRESS,
+      value: modelData?.address,
+      onChange: (value: string) => handleModelData(WebsiteKeys.ADDRESS, value),
     },
 
     {

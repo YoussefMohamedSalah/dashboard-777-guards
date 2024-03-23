@@ -18,6 +18,7 @@ export const WebsiteUpdateInput = (data: Website): any => {
     land_line: data.land_line,
     phone_number_1: data.phone_number_1,
     phone_number_2: data.phone_number_2,
+    address: data.address,
     facebook: data.facebook,
     instagram: data.instagram,
     tiktok: data.tiktok,
