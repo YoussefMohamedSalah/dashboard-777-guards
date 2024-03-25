@@ -17,11 +17,12 @@ export enum WebsiteKeys {
   LAND_LINE = "land_line",
   PHONE_NUMBER_1 = "phone_number_1",
   PHONE_NUMBER_2 = "phone_number_2",
-  ADDRESS = "address",
+  AR_ADDRESS = "ar_address",
+  EN_ADDRESS = "en_address",
   EMAIL = "email",
   FACEBOOK = "facebook",
   INSTAGRAM = "instagram",
-  TIKTOK = "tiktok",
+  LINKEDIN = "linkedin",
 }
 
 const Dashboard: React.FC = () => {
@@ -31,7 +32,7 @@ const Dashboard: React.FC = () => {
 
   const { mutateAsync: updateMutation } = useUpdateWebsite();
   const { data, error, isLoading } = useWebsiteDetailsQuery({ identifier: "777-guards" });
-  console.log(data)
+
   useEffect(() => {
     if (!initialized && data) {
       let website: Website = data?.website?.data!;
@@ -85,14 +86,21 @@ const Dashboard: React.FC = () => {
       onChange: (value: string) => handleModelData(WebsiteKeys.PHONE_NUMBER_2, value),
     },
     {
-      label: "Address",
+      label: "Arabic Address",
       type: "text",
       width: "col-md-12",
-      key: WebsiteKeys.ADDRESS,
-      value: modelData?.address,
-      onChange: (value: string) => handleModelData(WebsiteKeys.ADDRESS, value),
+      key: WebsiteKeys.AR_ADDRESS,
+      value: modelData?.ar_address,
+      onChange: (value: string) => handleModelData(WebsiteKeys.AR_ADDRESS, value),
     },
-
+    {
+      label: "English Address",
+      type: "text",
+      width: "col-md-12",
+      key: WebsiteKeys.EN_ADDRESS,
+      value: modelData?.en_address,
+      onChange: (value: string) => handleModelData(WebsiteKeys.EN_ADDRESS, value),
+    },
     {
       label: "Facebook",
       width: "col-md-4",
@@ -110,12 +118,12 @@ const Dashboard: React.FC = () => {
       onChange: (value: string) => handleModelData(WebsiteKeys.INSTAGRAM, value),
     },
     {
-      label: "Tiktok",
+      label: "Linkedin",
       width: "col-md-4",
       type: "text",
-      key: WebsiteKeys.TIKTOK,
-      value: modelData?.tiktok!,
-      onChange: (value: string) => handleModelData(WebsiteKeys.TIKTOK, value),
+      key: WebsiteKeys.LINKEDIN,
+      value: modelData?.linkedin!,
+      onChange: (value: string) => handleModelData(WebsiteKeys.LINKEDIN, value),
     }
   ];
 
