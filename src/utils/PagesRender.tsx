@@ -1,5 +1,6 @@
 import { PAGES } from "constants/pages";
 import { lazy } from "react";
+import Banners from "screens/Banners/Banners";
 import JobDetails from "screens/Jobs/JobDetails";
 import JobFormPage from "screens/Jobs/JobFormPage";
 import Jobs from "screens/Jobs/Jobs";
@@ -31,6 +32,8 @@ export const PagesRender = ({ slug, id }: PagesRenderProps): React.ReactNode => 
         return <JobFormPage />;
       case PAGES.CANDIDATES:
         return <Candidates />;
+      case PAGES.BANNERS:
+        return <Banners />;
       default:
         return <Dashboard />;
     }

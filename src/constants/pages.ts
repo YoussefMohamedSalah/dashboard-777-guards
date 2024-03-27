@@ -9,6 +9,8 @@ export enum PAGES {
   JOBS = "jobs",
   JOB_INFO = "job_rev",
 
+  BANNERS = "banners",
+
   CANDIDATE = "candidate",
   CANDIDATES = "candidates",
   CANDIDATE_INFO = "candidate_rev",

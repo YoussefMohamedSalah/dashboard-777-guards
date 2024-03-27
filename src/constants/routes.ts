@@ -11,6 +11,7 @@ export enum ROUTES {
   PROJECT = "project/",
   JOBS = "jobs/",
   CANDIDATES = "candidates/",
+  BANNERS = "website/banners/",
   WEBSITE = "website/",
   // !----- Company Endpoints ------
   USER = "user/",

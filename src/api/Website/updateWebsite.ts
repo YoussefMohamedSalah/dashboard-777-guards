@@ -13,15 +13,15 @@ export const useUpdateWebsite = () => {
 export const WebsiteUpdateInput = (data: Website): any => {
   return {
     id: data.id,
-    name: data.name,
-    email: data.email,
-    land_line: data.land_line,
-    phone_number_1: data.phone_number_1,
-    phone_number_2: data.phone_number_2,
-    en_address: data.en_address,
-    ar_address: data.ar_address,
-    facebook: data.facebook,
-    instagram: data.instagram,
-    linkedin: data.linkedin,
+    name: data.name || "",
+    email: data.email || "",
+    land_line: data.land_line || "",
+    phone_number_1: data.phone_number_1 || "",
+    phone_number_2: data.phone_number_2 || "",
+    en_address: data.en_address || "",
+    ar_address: data.ar_address || "",
+    facebook: data.facebook || "",
+    instagram: data.instagram || "",
+    linkedin: data.linkedin || "",
   } as Website;
 };

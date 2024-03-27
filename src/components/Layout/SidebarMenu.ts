@@ -18,5 +18,15 @@ export const sidebarMenu: any[] = [
     isCategory: false,
     isApp: false,
     children: [],
+  },
+  {
+    name: "Banners",
+    routerLink: ["/banners"],
+    identifier: "Banners",
+    iconClass: "icofont-image",
+    breadcrumbMessage: "",
+    isCategory: false,
+    isApp: false,
+    children: [],
   }
 ];
