@@ -3,7 +3,11 @@ export enum PAGES {
   REGISTER = "register",
   PROJECT = "project",
   PROJECTS = "projects",
+
   PROJECT_INFO = "project_rev",
+
+  CONTACT_US = "contact_us",
+  CONTACT_US_INFO = "contact_us_rev",
 
   JOB = "job",
   JOBS = "jobs",

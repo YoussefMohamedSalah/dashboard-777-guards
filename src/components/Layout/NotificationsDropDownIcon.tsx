@@ -1,6 +1,5 @@
 import { useUpdateNotificationStatus } from "api/Common/updateNotificationStatus";
 import { useUI } from "contexts/UIContext";
-import useApp from "hooks/useApp";
 import { Badge, Dropdown } from "react-bootstrap";
 import { getTimeDifference } from "utils/DateUtils";
 import { handleServerError } from "utils/HandlingServerError";
@@ -13,13 +12,11 @@ interface Props {
 const NotificationsDropDownIcon = ({ Notifications }: Props) => {
   const { mutateAsync } = useUpdateNotificationStatus();
   const { showError } = useUI();
-  const { push } = useApp();
 
   const handleNotificationStatus = async (notification: any) => {
     if (notification.is_read) return;
     try {
       await mutateAsync(notification.id);
-      push(notification.url);
     } catch (err: any) {
       console.log(err.response?.data?.msg!);
       showError(handleServerError(err.response));

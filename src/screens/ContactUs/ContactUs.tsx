@@ -5,21 +5,21 @@ import { PAGES } from "constants/pages";
 import { useUI } from "contexts/UIContext";
 import { handleServerError } from "utils/HandlingServerError";
 import TableActionBtn from "components/Common/TableActionBtn";
-import { useCandidatesQuery } from "api/Candidates/getAllCandidates";
-import { Candidate } from "types/Candidate";
-import CandidateTable from "components/Common/CandidateTable";
-import { useDeleteCandidate } from "api/Candidates/deleteCandidate";
+import { useDeleteContactUs } from "api/Contact/deleteContactUs";
+import { ContactUs } from "types/ContactUs";
+import ContactUsTable from "components/Common/ContactUsTable";
+import { useContactUsQuery } from "api/Contact/getAllContactUs";
 
-const Candidates: React.FC = () => {
-  const { mutateAsync: deleteMutation } = useDeleteCandidate();
-  const { data, error, isLoading } = useCandidatesQuery({});
+const ContactRequests: React.FC = () => {
+  const { mutateAsync: deleteMutation } = useDeleteContactUs();
+  const { data, error, isLoading } = useContactUsQuery({});
   const { showError, showSuccess } = useUI();
   const { push } = useApp();
 
   if (isLoading) return <Loading />;
   if (error) return null;
 
-  let candidates: Candidate[] = data?.candidates?.data! || ([] as Candidate[]);
+  let contact_us: ContactUs[] = data?.contact_us?.data! || ([] as ContactUs[]);
 
   const handleDelete = async (id: string) => {
     try {
@@ -32,24 +32,14 @@ const Candidates: React.FC = () => {
 
   let columnT: any[] = [
     {
-      name: "NAME",
+      name: "FULL NAME",
       selector: (row: any) => { },
       sortable: true,
       cell: (row: any) => (
-        <span onClick={() => push(`/${PAGES.CANDIDATE_INFO}/${row.id}`)} className="fw-bold text-secondary pointer">
-          {row.name}
+        <span className="fw-bold text-secondary pointer">
+          {row.full_name}
         </span>
       ),
-    },
-    {
-      name: "Birthday",
-      selector: (row: any) => row.birthday!,
-      sortable: true,
-    },
-    {
-      name: "PHONE NUMBER",
-      selector: (row: any) => row.phone_number!,
-      sortable: true,
     },
     {
       name: "EMAIL",
@@ -57,23 +47,23 @@ const Candidates: React.FC = () => {
       sortable: false,
     },
     {
-      name: "ADDRESS",
-      selector: (row: any) => row.address!,
+      name: "PHONE NUMBER",
+      selector: (row: any) => row.phone_number!,
       sortable: true,
     },
     {
-      name: "START DATE",
-      selector: (row: any) => row.start_date!,
+      name: "subject",
+      selector: (row: any) => row.subject!,
       sortable: true,
     },
     {
-      name: "JOB",
-      selector: (row: any) => row.job?.title!,
+      name: "DETAILS",
+      selector: (row: any) => row.info!,
       sortable: true,
     },
     {
-      name: "SUBMIT DATE",
-      selector: (row: any) => row.date!,
+      name: "DATE",
+      selector: (row: any) => row.createdAt!,
       sortable: true,
     },
     {
@@ -84,7 +74,7 @@ const Candidates: React.FC = () => {
       cell: (row: any) => (
         <TableActionBtn
           id={row.id!}
-          title={"Candidate"}
+          title={"Contact Request"}
           onDelete={handleDelete}
           onClickEdit={() => push("/")}
         />
@@ -97,16 +87,16 @@ const Candidates: React.FC = () => {
       <div className="container-fluid">
         {/* page header */}
         <PageHeader
-          headerTitle={"Candidates"}
+          headerTitle={"Contact Requests"}
           isBtnShow={false}
           isBackBtn={true}
         />
         {/* table data */}
         <div className="test">
-          <CandidateTable<Candidate>
-            title={"Candidates"}
+          <ContactUsTable<ContactUs>
+            title={"Contact Requests"}
             columns={columnT}
-            data={candidates}
+            data={contact_us}
             renderSearch={true}
             renderDownload={true}
             filterOptions={["name", "job", "date"]}
@@ -117,4 +107,4 @@ const Candidates: React.FC = () => {
   );
 };
 
-export default Candidates;
+export default ContactRequests;

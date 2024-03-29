@@ -1,6 +1,7 @@
 import { Candidate } from "types/Candidate";
+import { ContactUs } from "types/ContactUs";
 
-export const formatNormalCsvOutput = (
+export const formatCandidateCsvOutput = (
   data: Candidate[],
 ): any[] => {
   if (!data || data.length === 0) return [];
@@ -21,6 +22,29 @@ function formatCandidateData(data: Candidate[]): any[] {
       resource || "",
       start_date || "",
       job?.title || ""
+    ]),
+  ];
+}
+
+
+export const formatContactUsCsvOutput = (
+  data: ContactUs[],
+): any[] => {
+  if (!data || data.length === 0) return [];
+  return formatContactUsData(data as ContactUs[]);
+};
+
+function formatContactUsData(data: ContactUs[]): any[] {
+  if (!data || data.length === 0) return [];
+  return [
+    ["Full name", "Email", "Phone Number", "Subject", "Details", "Date"],
+    ...data.map(({ full_name, email, phone_number, subject, info, createdAt }) => [
+      full_name || '',
+      email || '',
+      phone_number || '',
+      subject || '',
+      info || "",
+      createdAt || ""
     ]),
   ];
 }

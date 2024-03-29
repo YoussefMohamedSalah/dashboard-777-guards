@@ -3,13 +3,8 @@ import DataTable from "react-data-table-component";
 import DownloadCSV from "components/UI/DownloadCSV";
 import TableSearch from "./TableSearch";
 import { Candidate } from "types/Candidate";
-import { formatNormalCsvOutput } from "utils/FormatNormalCsvOutput";
 import { formatCsvTitle } from "utils/FormatCsvTitle";
-// import { formatCsvTitle } from "utils/FormatCsvTitle";
-// import { Customer } from "types/Customer";
-// import { Supplier } from "types/Supplier";
-// import { Employee } from "types/Employee";
-// import { Subcontractor } from "types/Subcontractor";
+import { formatCandidateCsvOutput } from "utils/FormatNormalCsvOutput";
 
 interface Props<T extends Candidate> {
   title: string;
@@ -26,7 +21,7 @@ interface Props<T extends Candidate> {
   selectItem?: (item: T) => void;
 }
 
-function NormalTable<T extends Candidate>({
+function CandidateTable<T extends Candidate>({
   title,
   columns,
   data,
@@ -43,7 +38,7 @@ function NormalTable<T extends Candidate>({
   const [filteredData, setFilteredData] = useState<T[]>([...data] || []);
   const onSearchFilter = (filtered: T[]) => setFilteredData(filtered);
 
-  let csvData = formatNormalCsvOutput(filteredData || data) || [];
+  let csvData = formatCandidateCsvOutput(filteredData || data) || [];
 
   return (
     <div className="row clearfix g-3">
@@ -80,4 +75,4 @@ function NormalTable<T extends Candidate>({
   );
 }
 
-export default NormalTable;
+export default CandidateTable;
