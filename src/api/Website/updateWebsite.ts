@@ -17,6 +17,7 @@ export const WebsiteUpdateInput = (data: Website): any => {
     email: data.email || "",
     land_line: data.land_line || "",
     phone_number_1: data.phone_number_1 || "",
+    whatsapp_number: data.whatsapp_number || "",
     phone_number_2: data.phone_number_2 || "",
     en_address: data.en_address || "",
     ar_address: data.ar_address || "",

@@ -17,6 +17,7 @@ export enum WebsiteKeys {
   LAND_LINE = "land_line",
   PHONE_NUMBER_1 = "phone_number_1",
   PHONE_NUMBER_2 = "phone_number_2",
+  WHATSAPP_NUMBER = "whatsapp_number",
   AR_ADDRESS = "ar_address",
   EN_ADDRESS = "en_address",
   EMAIL = "email",
@@ -55,7 +56,7 @@ const Dashboard: React.FC = () => {
   const formFields: IField[] = [
     {
       label: "Email",
-      width: "col-md-3",
+      width: "col-md-4",
       type: "text",
       key: WebsiteKeys.EMAIL,
       value: modelData?.email!,
@@ -63,7 +64,7 @@ const Dashboard: React.FC = () => {
     },
     {
       label: "Land line",
-      width: "col-md-3",
+      width: "col-md-2",
       type: "text",
       key: WebsiteKeys.LAND_LINE,
       value: modelData?.land_line!,
@@ -71,7 +72,7 @@ const Dashboard: React.FC = () => {
     },
     {
       label: "1# Phone number",
-      width: "col-md-3",
+      width: "col-md-2",
       type: "text",
       key: WebsiteKeys.PHONE_NUMBER_1,
       value: modelData?.phone_number_1!,
@@ -79,11 +80,19 @@ const Dashboard: React.FC = () => {
     },
     {
       label: "2# Phone number",
-      width: "col-md-3",
+      width: "col-md-2",
       type: "text",
       key: WebsiteKeys.PHONE_NUMBER_2,
       value: modelData?.phone_number_2!,
       onChange: (value: string) => handleModelData(WebsiteKeys.PHONE_NUMBER_2, value),
+    },
+    {
+      label: "Whatsapp number",
+      width: "col-md-2",
+      type: "text",
+      key: WebsiteKeys.WHATSAPP_NUMBER,
+      value: modelData?.whatsapp_number!,
+      onChange: (value: string) => handleModelData(WebsiteKeys.WHATSAPP_NUMBER, value),
     },
     {
       label: "Arabic Address",

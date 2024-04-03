@@ -20,6 +20,16 @@ export const sidebarMenu: any[] = [
     children: [],
   },
   {
+    name: "Partners",
+    routerLink: ["/partners"],
+    identifier: "Partners",
+    iconClass: "icofont-users-alt-2",
+    breadcrumbMessage: "",
+    isCategory: false,
+    isApp: false,
+    children: [],
+  },
+  {
     name: "Contact us Requests",
     routerLink: ["/contact_us"],
     identifier: "Contact us Requests",

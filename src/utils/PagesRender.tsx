@@ -9,6 +9,7 @@ const Dashboard = lazy(() => import("../screens/Dashboard/Dashboard"));
 const Candidates = lazy(() => import("../screens/Candidates/Candidates"));
 const ContactUs = lazy(() => import("../screens/ContactUs/ContactUs"));
 const CandidateDetails = lazy(() => import("../screens/Candidates/CandidateDetails"));
+const Partners = lazy(() => import("../screens/Partners/Partners"));
 
 export interface PagesRenderProps {
   slug: string | null;
@@ -39,6 +40,8 @@ export const PagesRender = ({ slug, id }: PagesRenderProps): React.ReactNode => 
         return <ContactUs />;
       case PAGES.BANNERS:
         return <Banners />;
+      case PAGES.PARTNERS:
+        return <Partners />;
       default:
         return <Dashboard />;
     }

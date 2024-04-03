@@ -10,6 +10,8 @@ export enum ROUTES {
 
   PROJECT = "project/",
   JOBS = "jobs/",
+  PARTNERS = "partners/",
+
   CANDIDATES = "candidates/",
   CONTACT_US = "contact/",
   BANNERS = "website/banners/",
